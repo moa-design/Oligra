@@ -375,9 +375,16 @@ body.page-casaliva .cas-formats .cas-formats-note a:hover { color: #fff; border-
 .cas-format-card {
   background: rgba(255,255,255,0.05);
   border-top: 3px solid transparent;
-  transition: background .28s, border-color .28s, transform .28s, box-shadow .28s;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: background .28s, border-color .28s, box-shadow .28s,
+              opacity .5s cubic-bezier(0.22,1,0.36,1), transform .5s cubic-bezier(0.22,1,0.36,1);
 }
-.cas-format-card:hover {
+.cas-format-card.visible {
+  opacity: 1;
+  transform: none;
+}
+.cas-format-card.visible:hover {
   background: var(--cas-gold);
   border-top-color: rgba(255,255,255,0.35);
   transform: translateY(-6px);
