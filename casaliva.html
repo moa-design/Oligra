@@ -37,6 +37,7 @@
         <img src="assets/img/slide_home_02_1500.jpg" alt="">
       </div>
       <div class="cas-hero-overlay"></div>
+      <div class="cas-hero-glow" id="casGlow"></div>
       <div class="cas-hero-particles" id="casParticles"></div>
 
       <div class="cas-hero-content">
@@ -325,6 +326,61 @@
           heroBg.style.transform = 'scale(1.06) translateY(' + (y * 0.18) + 'px)';
         }
       }, { passive: true });
+    })();
+
+    /* ── CURSOR GLOW EN HERO ── */
+    (function () {
+      var hero = document.querySelector('.cas-hero');
+      var glow = document.getElementById('casGlow');
+      if (!hero || !glow) return;
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        var x = e.clientX - r.left, y = e.clientY - r.top;
+        glow.style.background = 'radial-gradient(circle 380px at ' + x + 'px ' + y + 'px, rgba(194,148,32,0.18) 0%, transparent 70%)';
+      });
+      hero.addEventListener('mouseleave', function () { glow.style.background = 'none'; });
+    })();
+
+    /* ── COUNTER ANIMADO EN STRIP ── */
+    (function () {
+      var strip = document.querySelector('.cas-strip');
+      if (!strip) return;
+      var done = false;
+      function animCount(el, target, prefix, suffix, dur) {
+        var t0 = performance.now();
+        (function tick(now) {
+          var p = Math.min((now - t0) / dur, 1);
+          var e = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(e * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        if (done || !entries[0].isIntersecting) return;
+        done = true;
+        strip.querySelectorAll('.cas-strip-text strong').forEach(function (el) {
+          var m = el.textContent.match(/^(\+?)(\d+)(.*)$/);
+          if (!m) return;
+          animCount(el, parseInt(m[2]), m[1], m[3], 1600);
+        });
+      }, { threshold: 0.6 });
+      obs.observe(strip);
+    })();
+
+    /* ── STAGGER EN FORMAT CARDS ── */
+    (function () {
+      var cards = document.querySelectorAll('.cas-format-card');
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var i = Array.from(cards).indexOf(entry.target);
+          setTimeout(function () {
+            entry.target.classList.add('visible');
+          }, i * 55);
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: 0.15 });
+      cards.forEach(function (c) { obs.observe(c); });
     })();
   </script>
 </body>

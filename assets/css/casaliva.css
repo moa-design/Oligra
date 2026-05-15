@@ -339,6 +339,64 @@ body.page-casaliva .footer          { background: var(--cas-deep); }
 body.page-casaliva .footer-col a:hover { color: var(--cas-gold); }
 body.page-casaliva .footer-bottom a { color: var(--cas-gold); }
 
+/* ── REVEAL — override Oligra's translateY(20px) ─ */
+body.page-casaliva .reveal {
+  opacity: 0;
+  transform: translateY(48px) scale(0.97) !important;
+  transition: opacity .9s cubic-bezier(0.22,1,0.36,1),
+              transform .9s cubic-bezier(0.22,1,0.36,1) !important;
+}
+body.page-casaliva .reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+body.page-casaliva .reveal-delay-1 { transition-delay: .12s !important; }
+body.page-casaliva .reveal-delay-2 { transition-delay: .24s !important; }
+body.page-casaliva .reveal-delay-3 { transition-delay: .36s !important; }
+
+/* ── SECTION TITLE — más grande, más impacto ─────── */
+body.page-casaliva .section-title    { max-width: none; }
+body.page-casaliva .section-title h2 { font-size: clamp(40px,6vw,82px); line-height: 1; }
+
+/* ── HERO CURSOR GLOW ───────────────────────────── */
+.cas-hero-glow {
+  position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  transition: background .08s linear;
+}
+
+/* ── FORMATOS — fondo verde oscuro ──────────────── */
+body.page-casaliva .cas-formats { background: var(--cas-green); }
+body.page-casaliva .cas-formats .section-title h2   { color: #fff; }
+body.page-casaliva .cas-formats .section-title h2::after { background: var(--cas-gold); }
+body.page-casaliva .cas-formats .section-title p    { color: rgba(255,255,255,0.58); }
+body.page-casaliva .cas-formats .cas-formats-note   { color: rgba(255,255,255,0.48); }
+body.page-casaliva .cas-formats .cas-formats-note a { color: var(--cas-gold); border-bottom-color: var(--cas-gold); }
+body.page-casaliva .cas-formats .cas-formats-note a:hover { color: #fff; border-color: #fff; }
+.cas-format-card {
+  background: rgba(255,255,255,0.05);
+  border-top: 3px solid transparent;
+  transition: background .28s, border-color .28s, transform .28s, box-shadow .28s;
+}
+.cas-format-card:hover {
+  background: var(--cas-gold);
+  border-top-color: rgba(255,255,255,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+.cas-format-size { color: rgba(255,255,255,0.88); }
+.cas-format-card:hover .cas-format-size { color: #fff; }
+.cas-format-unit { color: rgba(255,255,255,0.38); }
+.cas-format-card:hover .cas-format-unit { color: rgba(255,255,255,0.75); }
+
+/* ── STRIP — iconos más grandes ─────────────────── */
+.cas-strip-icon { font-size: 14px; }
+.cas-strip-text strong { font-size: 15px; letter-spacing: .02em; }
+.cas-strip-item { transition: background .25s, transform .25s; }
+.cas-strip-item:hover { transform: translateY(-2px); }
+
+/* ── PRODUCTS tab panel body ─────────────────────── */
+.cas-panel-body h3 { font-size: clamp(28px,3.8vw,54px); }
+
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 1000px) {
   .cas-panel { grid-template-columns: 1fr; }
