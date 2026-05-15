@@ -318,19 +318,18 @@ body.page-casaliva .section-title p        { color: var(--muted); max-width: 560
 
 /* ── CTA ──────────────────────────────────────── */
 .cas-cta {
-  background: linear-gradient(-45deg, #1C2C22, #314F41, #243D30, #1C2C22);
-  background-size: 400% 400%;
-  animation: gradientFlow 18s ease infinite;
-  text-align: center; color: #fff;
+  background: #fff;
+  text-align: center; color: var(--cas-green);
 }
 .cas-cta .eyebrow { color: var(--cas-gold); }
 .cas-cta h2 {
   font-family: var(--cas-serif);
   font-size: clamp(30px,5.5vw,66px);
   margin: 0 0 18px; line-height: 1.08;
+  color: var(--cas-green);
 }
 .cas-cta p {
-  color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.75;
+  color: var(--muted); font-size: 16px; line-height: 1.75;
   max-width: 520px; margin: 0 auto 36px;
 }
 
