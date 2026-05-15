@@ -122,7 +122,15 @@ if (particlesEl) {
 
 /* ── SCROLL REVEAL ── */
 const revealObs = new IntersectionObserver(
-  (entries) => entries.forEach((e) => e.target.classList.toggle('visible', e.isIntersecting)),
+  (entries) => entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    } else if (e.boundingClientRect.top > 0) {
+      // Sale por abajo (usuario sube) → retrae
+      e.target.classList.remove('visible');
+    }
+    // Sale por arriba (usuario bajó) → se queda visible
+  }),
   { threshold: 0.1 }
 );
 document.querySelectorAll('.reveal').forEach((el) => revealObs.observe(el));

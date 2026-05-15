@@ -378,7 +378,7 @@
             timers[i] = setTimeout(function () {
               entry.target.classList.add('visible');
             }, i * 55);
-          } else {
+          } else if (entry.boundingClientRect.top > 0) {
             clearTimeout(timers[i]);
             entry.target.classList.remove('visible');
           }
