@@ -39,21 +39,44 @@ body.page-casaliva h3 {
 }
 
 /* ── OVERRIDES GLOBALES ─────────────────────────── */
+body.page-casaliva                         { background: var(--cas-cream); }
 body.page-casaliva #pageOverlay            { background: var(--cas-green); }
-body.page-casaliva .site-header            { background: var(--cas-green); }
-body.page-casaliva .nav a.active           { color: var(--cas-gold); }
-body.page-casaliva .nav a:hover            { color: var(--cas-gold); }
+body.page-casaliva .site-header            { background: var(--cas-green); border-top: 3px solid var(--cas-gold); }
+body.page-casaliva .nav a                  { color: rgba(255,255,255,0.75); }
+body.page-casaliva .nav a:hover            { color: #fff; }
 body.page-casaliva .btn.primary            { background: var(--cas-gold); border-color: var(--cas-gold); color: #fff; }
 body.page-casaliva .btn.primary:hover      { background: transparent; color: var(--cas-gold); }
-body.page-casaliva .eyebrow                { color: var(--cas-gold); }
-body.page-casaliva .section-title h2       { font-family: var(--cas-serif); color: var(--cas-green); }
+body.page-casaliva .eyebrow                { color: var(--cas-gold); font-family: var(--cas-serif); font-weight: 900; letter-spacing: .22em; }
+body.page-casaliva .section-title          { text-align: left; }
+body.page-casaliva .section-title h2       { font-family: var(--cas-serif); color: var(--cas-green); padding-bottom: 20px; position: relative; }
+body.page-casaliva .section-title h2::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 48px; height: 3px; background: var(--cas-gold);
+}
+body.page-casaliva .section-title p        { color: var(--muted); max-width: 560px; }
 
 /* Logo SVG en header */
 .casaliva-logo-svg { height: 38px; width: auto; display: block; }
 
+/* Botón volver a Oligra */
+.cas-nav-back {
+  margin-left: 10px !important;
+  padding: 5px 14px !important;
+  border: 1.5px solid var(--cas-gold) !important;
+  color: var(--cas-gold) !important;
+  font-size: 11px !important;
+  letter-spacing: .1em;
+  transition: background .2s, color .2s !important;
+}
+.cas-nav-back:hover {
+  background: var(--cas-gold) !important;
+  color: #fff !important;
+}
+
 /* Nav móvil con color casaliva */
 @media (max-width: 900px) {
   body.page-casaliva .nav { background: var(--cas-green); }
+  .cas-nav-back { margin-left: 0 !important; }
 }
 
 /* ── HERO ─────────────────────────────────────── */
