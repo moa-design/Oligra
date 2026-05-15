@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\" -Recurse -Force)",
+      "PowerShell($files = @\\(\\); Get-ChildItem -Path \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\" -Recurse -File | ForEach-Object { $files += $_.FullName }; $files | Sort-Object)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\\\\assets\\\\docs\")",
+      "Bash(Out-Null)",
+      "Bash(Write-Output \"done\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\\\\assets\\\\docs\")",
+      "PowerShell(\"done\")",
+      "PowerShell(Get-ChildItem -Recurse \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\" | Where-Object { !$_.PSIsContainer } | Select-Object -ExpandProperty FullName)",
+      "Bash(python3 -c \"from PIL import Image; img=Image.open\\('img_expandiendo.png'\\); print\\(img.size\\)\")",
+      "Bash(python -c \"from PIL import Image; img=Image.open\\('img_expandiendo.png'\\); print\\(img.size\\)\")",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\\\\assets\\\\fonts\")",
+      "Bash(Write-Host \"OK\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\\\\assets\\\\fonts\")",
+      "PowerShell(gh auth status)",
+      "PowerShell(git -C \"c:\\\\Users\\\\Estud\\\\OneDrive\\\\Escritorio\\\\oligra-site\" status 2>&1)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Estud\\.claude\\projects\\c--Users-Estud-OneDrive-Escritorio-oligra-site\\memory"
+    ]
+  }
+}

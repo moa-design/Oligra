@@ -1,0 +1,334 @@
+/* ================================================
+   CASALIVA · casaliva.css
+   Identidad de marca Casaliva — separada de Oligra
+   Paleta: #314F41 (verde) | #F5F0E8 (crema) | #C29420 (dorado cálido)
+   Tipografía: Bernier Regular (títulos) + Montserrat/Gotham (cuerpo)
+   ================================================ */
+
+/* ── BERNIER REGULAR — autohosteada ─────────────
+   Descargá el font y colocá los archivos en:
+     assets/fonts/bernier-regular.woff2
+     assets/fonts/bernier-regular.woff
+   ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Bernier';
+  src: url('../fonts/BERNIERREGULAR.woff2') format('woff2'),
+       url('../fonts/BERNIERREGULAR.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body.page-casaliva {
+  --cas-green:  #314F41;
+  --cas-deep:   #1C2C22;
+  --cas-gold:   #C29420;
+  --cas-cream:  #F5F0E8;
+  --cas-warm:   #EAE0D0;
+  --cas-serif:  'Big Shoulders Display', 'Bernier', Georgia, sans-serif;
+}
+
+/* Headings en Bernier Regular — el weight 400 ES el Regular del manual */
+body.page-casaliva h1,
+body.page-casaliva h2,
+body.page-casaliva h3 {
+  font-family: 'Big Shoulders Display', 'Bernier', Georgia, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* ── OVERRIDES GLOBALES ─────────────────────────── */
+body.page-casaliva #pageOverlay            { background: var(--cas-green); }
+body.page-casaliva .site-header            { background: var(--cas-green); }
+body.page-casaliva .nav a.active           { color: var(--cas-gold); }
+body.page-casaliva .nav a:hover            { color: var(--cas-gold); }
+body.page-casaliva .btn.primary            { background: var(--cas-gold); border-color: var(--cas-gold); color: #fff; }
+body.page-casaliva .btn.primary:hover      { background: transparent; color: var(--cas-gold); }
+body.page-casaliva .eyebrow                { color: var(--cas-gold); }
+body.page-casaliva .section-title h2       { font-family: var(--cas-serif); color: var(--cas-green); }
+
+/* Logo SVG en header */
+.casaliva-logo-svg { height: 38px; width: auto; display: block; }
+
+/* Nav móvil con color casaliva */
+@media (max-width: 900px) {
+  body.page-casaliva .nav { background: var(--cas-green); }
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.cas-hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center;
+  overflow: hidden; background: var(--cas-deep);
+}
+.cas-hero-bg { position: absolute; inset: 0; }
+.cas-hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1.06); transform-origin: center;
+  will-change: transform; transition: transform 0.1s linear;
+}
+.cas-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    108deg,
+    rgba(28,44,34,0.96) 0%,
+    rgba(28,44,34,0.76) 48%,
+    rgba(28,44,34,0.3)  100%
+  );
+}
+.cas-hero-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.cas-particle {
+  position: absolute; border-radius: 50%;
+  background: rgba(194,148,32,0.2);
+  animation: casFloat linear infinite;
+}
+@keyframes casFloat {
+  from { transform: translateY(110vh); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  to   { transform: translateY(-60px) translateX(25px); opacity: 0; }
+}
+
+.cas-hero-content {
+  position: relative; z-index: 2;
+  padding: calc(var(--hh) + 72px) clamp(20px,6vw,88px) 100px;
+  max-width: 780px; color: #fff;
+}
+.cas-hero-badge { margin-bottom: 36px; }
+.cas-hero-badge svg { display: block; max-width: 100%; }
+
+.cas-hero h1 {
+  font-family: var(--cas-serif);
+  font-size: clamp(46px,7.5vw,96px);
+  color: #fff; margin: 0 0 22px;
+  line-height: 1.02; letter-spacing: -0.018em;
+}
+.cas-hero-content > p {
+  font-size: clamp(15px,1.8vw,19px);
+  color: rgba(255,255,255,0.82);
+  line-height: 1.8; margin: 0 0 36px; max-width: 580px;
+}
+.cas-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.cas-scroll-hint {
+  position: absolute; bottom: 38px;
+  left: clamp(20px,6vw,88px);
+  color: rgba(255,255,255,0.38);
+  font-size: 10px; letter-spacing: .26em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px; z-index: 2;
+}
+.cas-scroll-hint::after {
+  content: ''; width: 1px; height: 48px;
+  background: rgba(255,255,255,0.22);
+}
+
+/* ── HIGHLIGHTS STRIP ─────────────────────────── */
+.cas-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--cas-green);
+  border-top: 3px solid var(--cas-gold);
+}
+.cas-strip-item {
+  padding: clamp(22px,3vw,34px) clamp(18px,2.2vw,32px);
+  border-right: 1px solid rgba(255,255,255,0.09);
+  display: flex; align-items: center; gap: 16px;
+  transition: background .25s;
+}
+.cas-strip-item:last-child { border-right: 0; }
+.cas-strip-item:hover      { background: rgba(255,255,255,0.04); }
+.cas-strip-icon {
+  flex-shrink: 0; width: 38px; height: 38px;
+  border: 1.5px solid var(--cas-gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cas-gold); font-size: 13px; font-weight: 800;
+}
+.cas-strip-text strong {
+  display: block; color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 3px;
+}
+.cas-strip-text span { color: rgba(255,255,255,0.45); font-size: 11px; }
+
+/* ── PRODUCTOS / TABS ─────────────────────────── */
+.cas-products { background: var(--cas-cream); }
+
+.cas-tabs {
+  display: flex;
+  border-bottom: 2px solid rgba(49,79,65,0.15);
+  margin-bottom: 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cas-tabs::-webkit-scrollbar { display: none; }
+.cas-tab {
+  padding: 15px 36px;
+  background: transparent; border: 0;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  font-family: inherit; font-size: 11px; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.cas-tab.active { color: var(--cas-green); border-bottom-color: var(--cas-green); }
+.cas-tab:hover  { color: var(--cas-green); }
+
+.cas-tab-panels { position: relative; }
+.cas-panel { display: none; grid-template-columns: 1fr 1fr; gap: 3px; }
+.cas-panel.active { display: grid; animation: panelIn .42s ease; }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.cas-panel-img { overflow: hidden; min-height: 480px; }
+.cas-panel-img img { width: 100%; height: 100%; object-fit: cover; }
+.cas-panel-body {
+  background: #fff;
+  padding: clamp(40px,5.5vw,84px) clamp(36px,4.5vw,68px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cas-panel-body .eyebrow { color: var(--cas-green); }
+.cas-panel-body h3 {
+  font-family: var(--cas-serif);
+  font-size: clamp(26px,3.2vw,46px);
+  color: var(--cas-green); margin: 0 0 20px; line-height: 1.08;
+}
+.cas-panel-body > p {
+  color: var(--muted); line-height: 1.85; font-size: 15px; margin-bottom: 28px;
+}
+.cas-props { list-style: none; padding: 0; margin: 0; }
+.cas-props li {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid rgba(49,79,65,0.1);
+  font-size: 14px; color: var(--ink);
+  transition: padding-left .2s, color .2s;
+}
+.cas-props li:last-child { border-bottom: 0; }
+.cas-props li::before { content: '—'; color: var(--cas-gold); font-weight: 800; flex-shrink: 0; }
+.cas-props li:hover { padding-left: 8px; color: var(--cas-green); }
+
+/* ── KITCHEN BAND ─────────────────────────────── */
+.cas-kitchen-band {
+  position: relative;
+  height: clamp(280px,34vw,500px); overflow: hidden;
+}
+.cas-kitchen-band img { width: 100%; height: 100%; object-fit: cover; }
+.cas-kitchen-band-overlay {
+  position: absolute; inset: 0;
+  background: rgba(28,44,34,0.62);
+  display: flex; align-items: center; justify-content: center;
+}
+.cas-kitchen-band-text { text-align: center; color: #fff; padding: 0 20px; }
+.cas-kitchen-band-text h2 {
+  font-family: var(--cas-serif);
+  font-size: clamp(30px,5.5vw,70px);
+  margin: 0; line-height: 1.05;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+}
+.cas-kitchen-band-text p {
+  color: rgba(255,255,255,0.62);
+  text-transform: uppercase; letter-spacing: .22em;
+  font-size: 10px; margin-top: 16px;
+}
+
+/* ── FORMATOS ─────────────────────────────────── */
+.cas-formats { background: #fff; }
+
+.cas-formats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(108px,1fr));
+  gap: 3px; margin-top: 44px;
+}
+.cas-format-card {
+  background: var(--cas-cream);
+  padding: 32px 12px; text-align: center;
+  border-top: 3px solid transparent;
+  cursor: default;
+  transition: background .28s, border-color .28s, transform .28s;
+}
+.cas-format-card:hover {
+  background: var(--cas-green);
+  border-top-color: var(--cas-gold);
+  transform: translateY(-5px);
+}
+.cas-format-size {
+  display: block; font-size: clamp(22px,2.8vw,32px); font-weight: 800;
+  color: var(--cas-green); line-height: 1;
+  transition: color .28s;
+}
+.cas-format-card:hover .cas-format-size { color: #fff; }
+.cas-format-unit {
+  display: block; font-size: 10px;
+  text-transform: uppercase; letter-spacing: .14em;
+  color: var(--muted); margin-top: 7px;
+  transition: color .28s;
+}
+.cas-format-card:hover .cas-format-unit { color: rgba(255,255,255,0.5); }
+
+.cas-formats-note {
+  margin-top: 36px; font-size: 14px; color: var(--muted); margin-bottom: 0;
+}
+.cas-formats-note a {
+  color: var(--cas-green); font-weight: 700; text-decoration: none;
+  border-bottom: 1px solid var(--cas-green);
+  transition: color .2s, border-color .2s;
+}
+.cas-formats-note a:hover { color: var(--cas-gold); border-color: var(--cas-gold); }
+
+/* ── HISTORIA ─────────────────────────────────── */
+.cas-story { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.cas-story-text {
+  padding: clamp(52px,7vw,104px) clamp(36px,5vw,84px);
+  background: var(--cas-green); color: #fff;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cas-story-text .eyebrow { color: var(--cas-gold); }
+.cas-story-text h2 {
+  font-family: var(--cas-serif);
+  font-size: clamp(28px,3.8vw,52px);
+  color: #fff; margin: 0 0 22px; line-height: 1.08;
+}
+.cas-story-text p {
+  color: rgba(255,255,255,0.74);
+  line-height: 1.9; margin-bottom: 16px; font-size: 15px;
+}
+.cas-story-img { overflow: hidden; }
+.cas-story-img img { width: 100%; height: 100%; object-fit: cover; min-height: 460px; }
+
+/* ── CTA ──────────────────────────────────────── */
+.cas-cta {
+  background: linear-gradient(-45deg, #1C2C22, #314F41, #243D30, #1C2C22);
+  background-size: 400% 400%;
+  animation: gradientFlow 18s ease infinite;
+  text-align: center; color: #fff;
+}
+.cas-cta .eyebrow { color: var(--cas-gold); }
+.cas-cta h2 {
+  font-family: var(--cas-serif);
+  font-size: clamp(30px,5.5vw,66px);
+  margin: 0 0 18px; line-height: 1.08;
+}
+.cas-cta p {
+  color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.75;
+  max-width: 520px; margin: 0 auto 36px;
+}
+
+/* ── FOOTER ───────────────────────────────────── */
+body.page-casaliva .footer          { background: var(--cas-deep); }
+body.page-casaliva .footer-col a:hover { color: var(--cas-gold); }
+body.page-casaliva .footer-bottom a { color: var(--cas-gold); }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 1000px) {
+  .cas-panel { grid-template-columns: 1fr; }
+  .cas-panel-img { min-height: 300px; }
+  .cas-story { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .cas-strip     { grid-template-columns: 1fr 1fr; }
+  .cas-tab       { padding: 12px 20px; }
+}
+@media (max-width: 600px) {
+  .cas-strip          { grid-template-columns: 1fr; }
+  .cas-formats-grid   { grid-template-columns: repeat(3,1fr); }
+  .cas-tab            { padding: 12px 14px; letter-spacing: .06em; }
+  .cas-hero h1        { font-size: 40px; }
+}
