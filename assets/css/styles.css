@@ -280,7 +280,7 @@ h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:
 .export-header p  { color:rgba(255,255,255,.75); line-height:1.85; margin-bottom:16px; font-size:15px; }
 
 /* ── MAP WRAPPER + PINS ──────────────────────── */
-.map-wrapper { position:relative; width:100%; max-width:100%; margin:0 0 40px; }
+.map-wrapper { position:relative; width:100%; max-width:640px; margin:0 auto 40px; }
 .map-wrapper img { width:100%; filter:brightness(0) invert(1); opacity:.6; }
 .map-pins { position:absolute; inset:0; }
 .map-pin {
@@ -330,6 +330,33 @@ h1,h2,h3,h4 { font-family:'Montserrat',sans-serif; font-weight:800; line-height:
   text-transform:uppercase; letter-spacing:.1em; white-space:nowrap;
 }
 @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+
+/* ── COMEX BANNER ────────────────────────────── */
+.comex-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.comex-img {
+  position: relative;
+  overflow: hidden;
+  height: clamp(260px, 30vw, 460px);
+}
+.comex-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+}
+.comex-img:hover img { transform: scale(1.04); }
+.comex-img-label {
+  position: absolute; bottom: 24px; left: 24px;
+  color: #fff; font-size: 10px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  background: rgba(0,0,0,0.45); padding: 6px 14px;
+  backdrop-filter: blur(4px);
+}
+@media (max-width: 600px) {
+  .comex-banner { grid-template-columns: 1fr; }
+}
 
 /* ── FORMATS TABLE ───────────────────────────── */
 .formats-section { background: var(--cream); }
